@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\michal.wadas\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.7.2
+3 info using node@v5.10.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\michal.wadas\\Documents\\GitHub\\_hobby\\gulp-istanbul-espree',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\michal.wadas\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle gulp-istanbul@1.0.1~prepublish: gulp-istanbul@1.0.1
+11 silly lifecycle gulp-istanbul@1.0.1~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\michal.wadas\\AppData\\Roaming\\npm-cache\\gulp-istanbul\\1.0.1\\package.tgz',
+12 verbose tar pack   'C:\\Users\\michal.wadas\\Documents\\GitHub\\_hobby\\gulp-istanbul-espree' ]
+13 verbose tarball C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package.tgz
+14 verbose folder C:\Users\michal.wadas\Documents\GitHub\_hobby\gulp-istanbul-espree
+15 verbose addLocalTarball adding from inside cache C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package.tgz
+16 verbose correctMkdir C:\Users\michal.wadas\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd gulp-istanbul@1.0.1
+18 verbose afterAdd C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\michal.wadas\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package\package.json written
+21 silly publish { name: 'gulp-istanbul',
+21 silly publish   version: '1.0.1',
+21 silly publish   description: 'Istanbul unit test coverage plugin for gulp.',
+21 silly publish   keywords: [ 'gulpplugin', 'coverage', 'istanbul', 'unit test' ],
+21 silly publish   homepage: 'https://github.com/SBoudrias/gulp-istanbul',
+21 silly publish   bugs: { url: 'https://github.com/SBoudrias/gulp-istanbul/issues' },
+21 silly publish   author:
+21 silly publish    { name: 'Simon Boudrias',
+21 silly publish      email: 'admin@simonboudrias.com',
+21 silly publish      url: 'https://github.com/SBoudrias' },
+21 silly publish   main: 'index.js',
+21 silly publish   files: [ 'index.js' ],
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git://github.com/ginden/gulp-istanbul-espree.git' },
+21 silly publish   scripts: { pretest: 'jshint index.js ./test/.', test: 'mocha -R spec' },
+21 silly publish   dependencies:
+21 silly publish    { 'gulp-util': '^3.0.1',
+21 silly publish      istanbul: '^0.4.0',
+21 silly publish      'istanbul-espree': '^0.4.4',
+21 silly publish      'istanbul-threshold-checker': '^0.1.0',
+21 silly publish      lodash: '^4.0.0',
+21 silly publish      through2: '^2.0.0',
+21 silly publish      'vinyl-sourcemaps-apply': '^0.2.1' },
+21 silly publish   devDependencies:
+21 silly publish    { gulp: '^3.6.2',
+21 silly publish      'gulp-mocha': '^2.0.0',
+21 silly publish      'gulp-sourcemaps': '^1.6.0',
+21 silly publish      isparta: '^3.0.0',
+21 silly publish      jshint: '^2.5.0',
+21 silly publish      mocha: '^2.0.1',
+21 silly publish      rimraf: '^2.2.8' },
+21 silly publish   license: 'MIT',
+21 silly publish   readme: 'gulp-istanbul [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]\r\n===========================\r\n\r\n[Istanbul][istanbul] unit test coverage plugin for [gulp][gulp].\r\n\r\nWorks on top of any Node.js unit test framework.\r\n\r\nInstallation\r\n---------------\r\n\r\n```shell\r\nnpm install --save-dev gulp-istanbul\r\n```\r\n\r\nExample\r\n---------------\r\n\r\nIn your `gulpfile.js`:\r\n\r\n#### Node.js testing\r\n\r\n```javascript\r\nvar istanbul = require(\'gulp-istanbul\');\r\n// We\'ll use mocha in this example, but any test framework will work\r\nvar mocha = require(\'gulp-mocha\');\r\n\r\ngulp.task(\'pre-test\', function () {\r\n  return gulp.src([\'lib/**/*.js\'])\r\n    // Covering files\r\n    .pipe(istanbul())\r\n    // Force `require` to return covered files\r\n    .pipe(istanbul.hookRequire());\r\n});\r\n\r\ngulp.task(\'test\', [\'pre-test\'], function () {\r\n  return gulp.src([\'test/*.js\'])\r\n    .pipe(mocha())\r\n    // Creating the reports after tests ran\r\n    .pipe(istanbul.writeReports())\r\n    // Enforce a coverage of at least 90%\r\n    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));\r\n});\r\n```\r\n\r\n#### Browser testing\r\n\r\nFor browser testing, you\'ll need to write the files covered by istanbul in a directory from where you\'ll serve these files to the browser running the test. You\'ll also need a way to extract the value of the [coverage variable](#coveragevariable) after the test have runned in the browser.\r\n\r\nBrowser testing is hard. If you\'re not sure what to do, then I suggest you take a look at [Karma test runner](http://karma-runner.github.io) - it has built-in coverage using Istanbul.\r\n\r\n\r\n```javascript\r\nvar istanbul = require(\'gulp-istanbul\');\r\n\r\n\r\ngulp.task(\'pre-test\', function () {\r\n  return gulp.src([\'lib/**/*.js\'])\r\n    // Covering files\r\n    .pipe(istanbul())\r\n    // Write the covered files to a temporary directory\r\n    .pipe(gulp.dest(\'test-tmp/\'));\r\n});\r\n\r\ngulp.task(\'test\', [\'pre-test\'], function () {\r\n  // Make sure your tests files are requiring files from the\r\n  // test-tmp/ directory\r\n  return gulp.src([\'test/*.js\'])\r\n    .pipe(testFramework())\r\n    // Creating the reports after tests ran\r\n    .pipe(istanbul.writeReports());\r\n});\r\n```\r\n\r\n#### Source Maps\r\ngulp-istanbul supports [gulp-sourcemaps][gulp-sourcemaps] when instrumenting:\r\n\r\n\r\n```javascript\r\ngulp.task(\'pre-test\', function () {\r\n  return gulp.src([\'lib/**/*.js\'])\r\n    // optionally load existing source maps\r\n    .pipe(sourcemaps.init())\r\n    // Covering files\r\n    .pipe(istanbul())\r\n    .pipe(sourcemaps.write(\'.\'))\r\n    // Write the covered files to a temporary directory\r\n    .pipe(gulp.dest(\'test-tmp/\'));\r\n});\r\n```\r\n\r\nAPI\r\n--------------\r\n\r\n### istanbul(opt)\r\n\r\nInstrument files passed in the stream.\r\n\r\n#### opt\r\nType: `Object` (optional)\r\n```js\r\n{\r\n  coverageVariable: \'someVariable\',\r\n  ...other Instrumeter options...\r\n}\r\n```\r\n\r\n##### coverageVariable\r\nType: `String` (optional)\r\nDefault: `\'$$cov_\' + new Date().getTime() + \'$$\'`\r\n\r\nThe global variable istanbul uses to store coverage\r\n\r\nSee also:\r\n- [istanbul coverageVariable][istanbul-coverage-variable]\r\n- [SanboxedModule][sandboxed-module-coverage-variable]\r\n\r\n##### includeUntested\r\nType: `Boolean` (optional)\r\nDefault: `false`\r\n\r\nFlag to include test coverage of files that aren\'t `require`d by any tests\r\n\r\nSee also:\r\n- [istanbul "0% coverage" issue](https://github.com/gotwarlost/istanbul/issues/112)\r\n\r\n##### instrumenter\r\nType: `Instrumenter` (optional)\r\nDefault: `istanbul.Instrumenter`\r\n\r\nCustom Instrumenter to be used instead of the default istanbul one.\r\n\r\n```js\r\nvar isparta = require(\'isparta\');\r\nvar istanbul = require(\'gulp-istanbul\');\r\n\r\ngulp.src(\'lib/**.js\')\r\n  .pipe(istanbul({\r\n    // supports es6\r\n    instrumenter: isparta.Instrumenter\r\n  }));\r\n```\r\n\r\nSee also:\r\n- [isparta](https://github.com/douglasduteil/isparta)\r\n\r\n##### Other Istanbul Instrumenter options\r\n\r\nSee:\r\n- [istanbul Instrumenter documentation][istanbul-coverage-variable]\r\n\r\n### istanbul.hookRequire()\r\n\r\nOverwrite `require` so it returns the covered files. The method take an optional [option object](https://gotwarlost.github.io/istanbul/public/apidocs/classes/Hook.html#method_hookRequire).\r\n\r\nAlways use this option if you\'re running tests in Node.js\r\n\r\n### istanbul.summarizeCoverage(opt)\r\n\r\nget coverage summary details\r\n\r\n#### opt\r\nType: `Object` (optional)\r\n```js\r\n{\r\n  coverageVariable: \'someVariable\'\r\n}\r\n```\r\n##### coverageVariable\r\nType: `String` (optional)\r\nDefault: `\'$$cov_\' + new Date().getTime() + \'$$\'`\r\n\r\nThe global variable istanbul uses to store coverage\r\n\r\nSee also:\r\n- [istanbul coverageVariable][istanbul-coverage-variable]\r\n- [SanboxedModule][sandboxed-module-coverage-variable]\r\n\r\n#### returns\r\nType: `Object`\r\n```js\r\n{\r\n  lines: { total: 4, covered: 2, skipped: 0, pct: 50 },\r\n  statements: { total: 4, covered: 2, skipped: 0, pct: 50 },\r\n  functions: { total: 2, covered: 0, skipped: 0, pct: 0 },\r\n  branches: { total: 0, covered: 0, skipped: 0, pct: 100 }\r\n}\r\n```\r\n\r\nSee also:\r\n- [istanbul utils.summarizeCoverage()][istanbul-summarize-coverage]\r\n\r\n\r\n### istanbul.writeReports(opt)\r\n\r\nCreate the reports on stream end.\r\n\r\n#### opt\r\nType: `Object` (optional)\r\n```js\r\n{\r\n  dir: \'./coverage\',\r\n  reporters: [ \'lcov\', \'json\', \'text\', \'text-summary\', CustomReport ],\r\n  reportOpts: { dir: \'./coverage\' },\r\n  coverageVariable: \'someVariable\'\r\n}\r\n```\r\n\r\nYou can pass individual configuration to a reporter.\r\n```js\r\n{\r\n  dir: \'./coverage\',\r\n  reporters: [ \'lcovonly\', \'json\', \'text\', \'text-summary\', CustomReport ],\r\n  reportOpts: {\r\n    lcov: {dir: \'lcovonly\', file: \'lcov.info\'}\r\n    json: {dir: \'json\', file: \'converage.json\'}\r\n  },\r\n  coverageVariable: \'someVariable\'\r\n}\r\n```\r\n##### dir\r\nType: `String` (optional)\r\nDefault: `./coverage`\r\n\r\nThe folder in which the reports are to be outputted.\r\n\r\n##### reporters\r\nType: `Array` (optional)\r\nDefault: `[ \'lcov\', \'json\', \'text\', \'text-summary\' ]`\r\n\r\nThe list of available reporters:\r\n- `clover`\r\n- `cobertura`\r\n- `html`\r\n- `json`\r\n- `lcov`\r\n- `lcovonly`\r\n- `none`\r\n- `teamcity`\r\n- `text`\r\n- `text-summary`\r\n\r\nYou can also specify one or more custom reporter objects as items in the array. These will be automatically registered with istanbul.\r\n\r\nSee also `require(\'istanbul\').Report.getReportList()`\r\n\r\n##### coverageVariable\r\nType: `String` (optional)\r\nDefault: `\'$$cov_\' + new Date().getTime() + \'$$\'`\r\n\r\nThe global variable istanbul uses to store coverage\r\n\r\nSee also:\r\n- [istanbul coverageVariable][istanbul-coverage-variable]\r\n- [SanboxedModule][sandboxed-module-coverage-variable]\r\n\r\n\r\n### istanbul.enforceThresholds(opt)\r\n\r\nChecks coverage against minimum acceptable thresholds. Fails the build if any of the thresholds are not met.\r\n\r\n#### opt\r\nType: `Object` (optional)\r\n```js\r\n{\r\n  coverageVariable: \'someVariable\',\r\n  thresholds: {\r\n    global: 60,\r\n    each: -10\r\n  }\r\n}\r\n```\r\n\r\n##### coverageVariable\r\nType: `String` (optional)\r\nDefault: `\'$$cov_\' + new Date().getTime() + \'$$\'`\r\n\r\nThe global variable istanbul uses to store coverage\r\n\r\n\r\n##### thresholds\r\nType: `Object` (required)\r\n\r\nMinimum acceptable coverage thresholds. Any coverage values lower than the specified threshold will fail the build.\r\n\r\nEach threshold value can be:\r\n- A positive number - used as a percentage\r\n- A negative number - used as the maximum amount of coverage gaps\r\n- A falsey value will skip the coverage\r\n\r\nThresholds can be specified across all files (`global`) or per file (`each`):\r\n```\r\n{\r\n  global: 80,\r\n  each: 60\r\n}\r\n```\r\n\r\nYou can also specify a value for each metric:\r\n```\r\n{\r\n  global: {\r\n    statements: 80,\r\n    branches: 90,\r\n    lines: 70,\r\n    functions: -10\r\n  }\r\n  each: {\r\n    statements: 100,\r\n    branches: 70,\r\n    lines: -20\r\n  }\r\n}\r\n```\r\n\r\n#### emits\r\n\r\nA plugin error in the stream if the coverage fails\r\n\r\nLicense\r\n------------\r\n\r\n[MIT License](http://en.wikipedia.org/wiki/MIT_License) (c) Simon Boudrias - 2013\r\n\r\n[istanbul]: http://gotwarlost.github.io/istanbul/\r\n[gulp]: https://github.com/gulpjs/gulp\r\n[gulp-sourcemaps]: https://github.com/floridoo/gulp-sourcemaps\r\n\r\n[npm-url]: https://npmjs.org/package/gulp-istanbul\r\n[npm-image]: https://badge.fury.io/js/gulp-istanbul.svg\r\n\r\n[travis-url]: http://travis-ci.org/SBoudrias/gulp-istanbul\r\n[travis-image]: https://secure.travis-ci.org/SBoudrias/gulp-istanbul.svg?branch=master\r\n\r\n[depstat-url]: https://david-dm.org/SBoudrias/gulp-istanbul\r\n[depstat-image]: https://david-dm.org/SBoudrias/gulp-istanbul.svg\r\n\r\n[istanbul-coverage-variable]: http://gotwarlost.github.io/istanbul/public/apidocs/classes/Instrumenter.html\r\n[istanbul-summarize-coverage]: http://gotwarlost.github.io/istanbul/public/apidocs/classes/ObjectUtils.html#method_summarizeCoverage\r\n[sandboxed-module-coverage-variable]: https://github.com/felixge/node-sandboxed-module/blob/master/lib/sandboxed_module.js#L240\r\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'dc3ef3631458cf74ee639f803e9805354aa61899',
+21 silly publish   _id: 'gulp-istanbul@1.0.1',
+21 silly publish   _shasum: '81668e1aeb6a43fa7baed5956f797c650039914c',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name gulp-istanbul
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/gulp-istanbul
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading C:\Users\michal.wadas\AppData\Roaming\npm-cache\gulp-istanbul\1.0.1\package.tgz
+29 verbose request uri https://registry.npmjs.org/gulp-istanbul
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 13:19:02
+32 verbose request using bearer token for auth
+33 verbose request id 156e8235b1fb885e
+34 http request PUT https://registry.npmjs.org/gulp-istanbul
+35 http 403 https://registry.npmjs.org/gulp-istanbul
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '107',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Tue, 12 Jul 2016 11:19:04 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-fra1224-FRA',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1468322343.813710,VS0,VE779',
+36 verbose headers   vary: 'Accept-Encoding' }
+37 verbose request invalidating C:\Users\michal.wadas\AppData\Roaming\npm-cache\registry.npmjs.org\gulp-istanbul on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: you do not have permission to publish "gulp-istanbul". Are you logged in as the correct user? : gulp-istanbul
+39 verbose stack     at makeError (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+39 verbose stack     at Request._callback (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+39 verbose stack     at Request.self.callback (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:199:22)
+39 verbose stack     at emitTwo (events.js:100:13)
+39 verbose stack     at Request.emit (events.js:185:7)
+39 verbose stack     at Request.<anonymous> (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1036:10)
+39 verbose stack     at emitOne (events.js:95:20)
+39 verbose stack     at Request.emit (events.js:182:7)
+39 verbose stack     at IncomingMessage.<anonymous> (C:\Users\michal.wadas\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid gulp-istanbul
+42 verbose cwd C:\Users\michal.wadas\Documents\GitHub\_hobby\gulp-istanbul-espree
+43 error Windows_NT 10.0.10586
+44 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\michal.wadas\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+45 error node v5.10.1
+46 error npm  v3.7.2
+47 error code E403
+48 error you do not have permission to publish "gulp-istanbul". Are you logged in as the correct user? : gulp-istanbul
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]

@@ -1,6 +1,6 @@
 {
-  "name": "gulp-istanbul",
-  "version": "1.0.0",
+  "name": "gulp-istanbul-espree",
+  "version": "1.0.1",
   "description": "Istanbul unit test coverage plugin for gulp.",
   "keywords": [
     "gulpplugin",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/SBoudrias/gulp-istanbul.git"
+    "url": "git://github.com/ginden/gulp-istanbul-espree.git"
   },
   "scripts": {
     "pretest": "jshint index.js ./test/.",
@@ -30,6 +30,7 @@
   "dependencies": {
     "gulp-util": "^3.0.1",
     "istanbul": "^0.4.0",
+    "istanbul-espree": "^0.4.4",
     "istanbul-threshold-checker": "^0.1.0",
     "lodash": "^4.0.0",
     "through2": "^2.0.0",
