@@ -1,6 +1,6 @@
 {
   "name": "gulp-istanbul-espree",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Istanbul unit test coverage plugin for gulp.",
   "keywords": [
     "gulpplugin",
